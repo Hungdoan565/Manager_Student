@@ -80,19 +80,19 @@ const SmoothDropdown = ({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute z-50 w-full mt-2 bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden"
+             className="absolute z-50 w-full mt-2 bg-white border border-gray-200 rounded-2xl shadow-lg overflow-hidden"
           >
             {options.map((option, index) => (
               <motion.button
                 key={option.value}
                 type="button"
                 onClick={() => handleOptionClick(option)}
-                className={`
-                  w-full px-4 py-3 text-left hover:bg-emerald-50 transition-colors duration-200
-                  ${selectedOption?.value === option.value ? 'bg-emerald-100 text-emerald-700' : 'text-gray-900'}
-                  ${index === 0 ? 'rounded-t-xl' : ''}
-                  ${index === options.length - 1 ? 'rounded-b-xl' : ''}
-                `}
+                 className={`
+                   w-full px-4 py-3 text-left hover:bg-emerald-50 transition-colors duration-200
+                   ${selectedOption?.value === option.value ? 'bg-emerald-100 text-emerald-700' : 'text-gray-900'}
+                   ${index === 0 ? 'rounded-t-2xl' : ''}
+                   ${index === options.length - 1 ? 'rounded-b-2xl' : ''}
+                 `}
                 whileHover={{ backgroundColor: '#f0fdf4' }}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
