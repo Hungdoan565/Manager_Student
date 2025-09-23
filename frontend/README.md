@@ -70,16 +70,19 @@ frontend/
 - **Landing Page**: Professional landing page with animations
 - **Design System**: Complete UI component library
 - **Supabase Integration**: Database and authentication setup
-- **Authentication**: Login/Register forms with validation
+- **Authentication**: Real authentication with Supabase
+- **Teacher Dashboard**: Overview and management interface
+- **Student Dashboard**: Student-focused interface
 - **Navigation**: Animated GooeyNav component
 - **Responsive Design**: Mobile-first approach
+- **Role-based Access**: Teacher/Student permissions
 
 ### 🚧 In Progress
 
-- **Teacher Dashboard**: Overview and management interface
 - **Student Management**: CRUD operations for students
 - **Class Management**: Class creation and management
 - **Attendance System**: QR code attendance tracking
+- **Schedule Management**: Class scheduling system
 - **Reports & Analytics**: Data visualization and reports
 
 ## 🔧 Setup

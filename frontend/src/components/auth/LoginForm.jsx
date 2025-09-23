@@ -37,7 +37,16 @@ const LoginForm = () => {
       clearError()
       await signIn(data.email, data.password)
       toast.success('Đăng nhập thành công!')
-      navigate('/dashboard')
+      
+      // Redirect based on user role
+      const userProfile = useAuthStore.getState().profile
+      if (userProfile?.role === 'teacher') {
+        navigate('/teacher-dashboard')
+      } else if (userProfile?.role === 'student') {
+        navigate('/student-dashboard')
+      } else {
+        navigate('/dashboard')
+      }
     } catch (err) {
       setError('root', {
         message: err.message || 'Đăng nhập thất bại'

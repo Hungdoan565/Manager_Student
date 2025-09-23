@@ -13,7 +13,35 @@ export class AuthService {
       if (error) throw error
 
       // Get user profile with role information
-      const profile = await supabaseHelpers.getUserProfile(data.user.id)
+      let profile = null
+      try {
+        const { data: profileData, error: profileError } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('id', data.user.id)
+          .single()
+
+        if (profileError) {
+          console.warn('Profile not found:', profileError)
+          // Create a basic profile if not exists
+          profile = {
+            id: data.user.id,
+            email: data.user.email,
+            full_name: data.user.user_metadata?.full_name || data.user.email,
+            role: data.user.user_metadata?.role || 'teacher'
+          }
+        } else {
+          profile = profileData
+        }
+      } catch (profileErr) {
+        console.warn('Profile fetch error:', profileErr)
+        profile = {
+          id: data.user.id,
+          email: data.user.email,
+          full_name: data.user.user_metadata?.full_name || data.user.email,
+          role: data.user.user_metadata?.role || 'teacher'
+        }
+      }
       
       return {
         user: data.user,
@@ -35,25 +63,32 @@ export class AuthService {
         options: {
           data: {
             full_name: userData.fullName,
-            role: userData.role || 'student'
+            role: userData.role || 'student',
+            student_id: userData.studentId || null,
+            faculty: userData.faculty || null,
+            phone: userData.phone || null
           }
         }
       })
 
       if (error) throw error
 
-      // Create profile record
+      // Profile will be created automatically by trigger
+      // But we can update it with additional data
       if (data.user) {
         const { error: profileError } = await supabase
           .from('profiles')
-          .insert({
-            id: data.user.id,
-            email: data.user.email,
-            full_name: userData.fullName,
-            role: userData.role || 'student'
+          .update({
+            phone: userData.phone || null,
+            student_id: userData.studentId || null,
+            faculty: userData.faculty || null
           })
+          .eq('id', data.user.id)
 
-        if (profileError) throw profileError
+        if (profileError) {
+          console.warn('Profile update error:', profileError)
+          // Don't throw error, profile was created by trigger
+        }
       }
 
       return {

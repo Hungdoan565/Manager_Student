@@ -1,24 +1,61 @@
 import { Route, Routes } from 'react-router-dom'
 import LoginPage from './pages/auth/LoginPage'
 import RegisterPage from './pages/auth/RegisterPage'
-import FormTest from './pages/FormTest'
 import LandingPage from './pages/LandingPage'
-import NavTest from './pages/NavTest'
-import SimpleLanding from './pages/SimpleLanding'
-import SimpleTest from './pages/SimpleTest'
-import TestPage from './pages/TestPage'
+
+// Dashboard Components
+import DashboardLayout from './components/layout/DashboardLayout'
+import StudentDashboard from './pages/dashboard/StudentDashboard'
+import TeacherDashboard from './pages/dashboard/TeacherDashboard'
+
+// Protected Routes
+import { ProtectedRoute, StudentRoute, TeacherRoute } from './components/auth/ProtectedRoute'
 
 function App() {
   return (
     <Routes>
+      {/* Public Routes */}
       <Route path="/" element={<LandingPage />} />
-      <Route path="/simple" element={<SimpleLanding />} />
-      <Route path="/nav-test" element={<NavTest />} />
-      <Route path="/form-test" element={<FormTest />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/test" element={<TestPage />} />
-      <Route path="/simple-test" element={<SimpleTest />} />
+
+      {/* Protected Dashboard Routes */}
+      <Route path="/dashboard" element={
+        <ProtectedRoute>
+          <DashboardLayout />
+        </ProtectedRoute>
+      }>
+        {/* Teacher Dashboard */}
+        <Route index element={
+          <TeacherRoute>
+            <TeacherDashboard />
+          </TeacherRoute>
+        } />
+        
+        {/* Student Dashboard */}
+        <Route path="student" element={
+          <StudentRoute>
+            <StudentDashboard />
+          </StudentRoute>
+        } />
+      </Route>
+
+      {/* Direct Dashboard Routes */}
+      <Route path="/teacher-dashboard" element={
+        <TeacherRoute>
+          <DashboardLayout>
+            <TeacherDashboard />
+          </DashboardLayout>
+        </TeacherRoute>
+      } />
+      
+      <Route path="/student-dashboard" element={
+        <StudentRoute>
+          <DashboardLayout>
+            <StudentDashboard />
+          </DashboardLayout>
+        </StudentRoute>
+      } />
     </Routes>
   )
 }
