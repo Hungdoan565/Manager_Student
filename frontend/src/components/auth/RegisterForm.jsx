@@ -18,6 +18,7 @@ import toast from 'react-hot-toast'
 import { Link, useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 import { useAuthStore } from '../../store/authStore'
+import SmoothDropdown from '../ui/SmoothDropdown'
 
 // Validation schema
 const registerSchema = z.object({
@@ -46,6 +47,7 @@ const RegisterForm = () => {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
     setError
   } = useForm({
@@ -169,18 +171,16 @@ const RegisterForm = () => {
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Vai trò
               </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <GraduationCap className="h-5 w-5 text-gray-400" />
-                </div>
-                <select
-                  {...register('role')}
-                  className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors appearance-none bg-white"
-                >
-                  <option value="student">Sinh viên</option>
-                  <option value="teacher">Giáo viên</option>
-                </select>
-              </div>
+              <SmoothDropdown
+                options={[
+                  { value: 'student', label: 'Sinh viên' },
+                  { value: 'teacher', label: 'Giáo viên' }
+                ]}
+                value={watch('role')}
+                onChange={(value) => setValue('role', value)}
+                placeholder="Chọn vai trò"
+                icon={GraduationCap}
+              />
               {errors.role && (
                 <p className="mt-1 text-sm text-red-600">{errors.role.message}</p>
               )}
@@ -202,7 +202,7 @@ const RegisterForm = () => {
                 <input
                   {...register('fullName')}
                   type="text"
-                  className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                  className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                   placeholder="Đoàn Vĩnh Hưng"
                 />
               </div>
@@ -227,7 +227,7 @@ const RegisterForm = () => {
                 <input
                   {...register('email')}
                   type="email"
-                  className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                  className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                   placeholder="hungdoan@student.nctu.edu.vn"
                 />
               </div>
@@ -252,7 +252,7 @@ const RegisterForm = () => {
                 <input
                   {...register('phone')}
                   type="tel"
-                  className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                  className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                   placeholder="0919000258"
                 />
               </div>
@@ -278,7 +278,7 @@ const RegisterForm = () => {
                   <input
                     {...register('studentId')}
                     type="text"
-                    className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                    className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                     placeholder="223277"
                   />
                 </div>
@@ -298,21 +298,19 @@ const RegisterForm = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Khoa
                 </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Building2 className="h-5 w-5 text-gray-400" />
-                  </div>
-                  <select
-                    {...register('faculty')}
-                    className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors appearance-none bg-white"
-                  >
-                    <option value="">Chọn khoa</option>
-                    <option value="cntt">Công nghệ thông tin</option>
-                    <option value="kt">Kinh tế</option>
-                    <option value="nn">Ngoại ngữ</option>
-                    <option value="kh">Khoa học</option>
-                  </select>
-                </div>
+                <SmoothDropdown
+                  options={[
+                    { value: '', label: 'Chọn khoa' },
+                    { value: 'cntt', label: 'Công nghệ thông tin' },
+                    { value: 'kt', label: 'Kinh tế' },
+                    { value: 'nn', label: 'Ngoại ngữ' },
+                    { value: 'kh', label: 'Khoa học' }
+                  ]}
+                  value={watch('faculty')}
+                  onChange={(value) => setValue('faculty', value)}
+                  placeholder="Chọn khoa"
+                  icon={Building2}
+                />
                 {errors.faculty && (
                   <p className="mt-1 text-sm text-red-600">{errors.faculty.message}</p>
                 )}
@@ -335,7 +333,7 @@ const RegisterForm = () => {
                 <input
                   {...register('password')}
                   type={showPassword ? 'text' : 'password'}
-                  className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                  className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                   placeholder="••••••••••"
                 />
                 <button
@@ -371,7 +369,7 @@ const RegisterForm = () => {
                 <input
                   {...register('confirmPassword')}
                   type={showConfirmPassword ? 'text' : 'password'}
-                  className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                  className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                   placeholder="••••••••••"
                 />
                 <button

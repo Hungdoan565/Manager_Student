@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import LoginPage from './pages/auth/LoginPage'
 import RegisterPage from './pages/auth/RegisterPage'
+import FormTest from './pages/FormTest'
 import LandingPage from './pages/LandingPage'
 import NavTest from './pages/NavTest'
 import SimpleLanding from './pages/SimpleLanding'
@@ -13,6 +14,7 @@ function App() {
       <Route path="/" element={<LandingPage />} />
       <Route path="/simple" element={<SimpleLanding />} />
       <Route path="/nav-test" element={<NavTest />} />
+      <Route path="/form-test" element={<FormTest />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/test" element={<TestPage />} />
