@@ -4,7 +4,6 @@ import RegisterPage from './pages/auth/RegisterPage'
 import LandingPage from './pages/LandingPage'
 
 // Dashboard Components
-import DashboardLayout from './components/layout/DashboardLayout'
 import HorizontalDashboardLayout from './components/layout/HorizontalDashboardLayout'
 import StudentDashboard from './pages/dashboard/StudentDashboard'
 import TeacherDashboard from './pages/dashboard/TeacherDashboard'
@@ -117,20 +116,28 @@ function App() {
 
       {/* Direct Dashboard Routes */}
       <Route path="/teacher-dashboard" element={
-        <TeacherRoute>
-          <DashboardLayout>
+        <ProtectedRoute>
+          <HorizontalDashboardLayout />
+        </ProtectedRoute>
+      }>
+        <Route index element={
+          <TeacherRoute>
             <TeacherDashboard />
-          </DashboardLayout>
-        </TeacherRoute>
-      } />
+          </TeacherRoute>
+        } />
+      </Route>
       
       <Route path="/student-dashboard" element={
-        <StudentRoute>
-          <DashboardLayout>
+        <ProtectedRoute>
+          <HorizontalDashboardLayout />
+        </ProtectedRoute>
+      }>
+        <Route index element={
+          <StudentRoute>
             <StudentDashboard />
-          </DashboardLayout>
-        </StudentRoute>
-      } />
+          </StudentRoute>
+        } />
+      </Route>
     </Routes>
   )
 }
