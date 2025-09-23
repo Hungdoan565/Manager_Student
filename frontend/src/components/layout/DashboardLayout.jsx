@@ -13,7 +13,7 @@ import {
     X
 } from 'lucide-react'
 import React from 'react'
-import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../../store/authStore'
 
 const DashboardLayout = () => {
@@ -111,21 +111,24 @@ const DashboardLayout = () => {
             {menuItems.map((item, index) => {
               const isActive = location.pathname === item.href
               return (
-                <motion.a
+                <motion.div
                   key={item.name}
-                  href={item.href}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors ${
-                    isActive 
-                      ? 'bg-emerald-100 text-emerald-700' 
-                      : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
-                  }`}
                 >
-                  <item.icon className="w-5 h-5" />
-                  <span className="font-medium">{item.name}</span>
-                </motion.a>
+                  <Link
+                    to={item.href}
+                    className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors ${
+                      isActive 
+                        ? 'bg-emerald-100 text-emerald-700' 
+                        : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                    }`}
+                  >
+                    <item.icon className="w-5 h-5" />
+                    <span className="font-medium">{item.name}</span>
+                  </Link>
+                </motion.div>
               )
             })}
           </nav>

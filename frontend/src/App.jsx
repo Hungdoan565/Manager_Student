@@ -5,8 +5,18 @@ import LandingPage from './pages/LandingPage'
 
 // Dashboard Components
 import DashboardLayout from './components/layout/DashboardLayout'
+import HorizontalDashboardLayout from './components/layout/HorizontalDashboardLayout'
 import StudentDashboard from './pages/dashboard/StudentDashboard'
 import TeacherDashboard from './pages/dashboard/TeacherDashboard'
+
+// Student Management Pages
+import StudentListPage from './pages/students/StudentListPage'
+
+// Other Pages
+import AttendancePage from './pages/attendance/AttendancePage'
+import ClassesPage from './pages/classes/ClassesPage'
+import ReportsPage from './pages/reports/ReportsPage'
+import SettingsPage from './pages/settings/SettingsPage'
 
 // Protected Routes
 import { ProtectedRoute, StudentRoute, TeacherRoute } from './components/auth/ProtectedRoute'
@@ -19,10 +29,10 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
 
-      {/* Protected Dashboard Routes */}
+      {/* Protected Dashboard Routes - Using Horizontal Layout */}
       <Route path="/dashboard" element={
         <ProtectedRoute>
-          <DashboardLayout />
+          <HorizontalDashboardLayout />
         </ProtectedRoute>
       }>
         {/* Teacher Dashboard */}
@@ -37,6 +47,71 @@ function App() {
           <StudentRoute>
             <StudentDashboard />
           </StudentRoute>
+        } />
+      </Route>
+
+      {/* Student Management Routes */}
+      <Route path="/students" element={
+        <ProtectedRoute>
+          <HorizontalDashboardLayout />
+        </ProtectedRoute>
+      }>
+        <Route index element={
+          <TeacherRoute>
+            <StudentListPage />
+          </TeacherRoute>
+        } />
+      </Route>
+
+      {/* Classes Management Routes */}
+      <Route path="/classes" element={
+        <ProtectedRoute>
+          <HorizontalDashboardLayout />
+        </ProtectedRoute>
+      }>
+        <Route index element={
+          <TeacherRoute>
+            <ClassesPage />
+          </TeacherRoute>
+        } />
+      </Route>
+
+      {/* Attendance Routes */}
+      <Route path="/attendance" element={
+        <ProtectedRoute>
+          <HorizontalDashboardLayout />
+        </ProtectedRoute>
+      }>
+        <Route index element={
+          <TeacherRoute>
+            <AttendancePage />
+          </TeacherRoute>
+        } />
+      </Route>
+
+      {/* Reports Routes */}
+      <Route path="/reports" element={
+        <ProtectedRoute>
+          <HorizontalDashboardLayout />
+        </ProtectedRoute>
+      }>
+        <Route index element={
+          <TeacherRoute>
+            <ReportsPage />
+          </TeacherRoute>
+        } />
+      </Route>
+
+      {/* Settings Routes */}
+      <Route path="/settings" element={
+        <ProtectedRoute>
+          <HorizontalDashboardLayout />
+        </ProtectedRoute>
+      }>
+        <Route index element={
+          <TeacherRoute>
+            <SettingsPage />
+          </TeacherRoute>
         } />
       </Route>
 
