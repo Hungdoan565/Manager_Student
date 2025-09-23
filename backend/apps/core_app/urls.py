@@ -1,16 +1,10 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from . import views
+from .views import HealthView
 
 router = DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'profiles', views.ProfileViewSet)
-router.register(r'academic-years', views.AcademicYearViewSet)
-router.register(r'classes', views.ClassViewSet)
-router.register(r'subjects', views.SubjectViewSet)
-router.register(r'schedules', views.ScheduleViewSet)
+# Students endpoints will be mounted from apps.api.urls
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('health/', HealthView.as_view(), name='health'),
 ]
-

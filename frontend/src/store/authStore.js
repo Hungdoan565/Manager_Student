@@ -356,22 +356,36 @@ export const useClassStore = create((set, get) => ({
   currentClass: null,
   isLoading: false,
   error: null,
+  pagination: {
+    currentPage: 1,
+    totalPages: 1,
+    totalCount: 0,
+    limit: 20,
+  },
 
   // Actions
-  fetchClasses: async () => {
+  fetchClasses: async (options = {}) => {
     set({ isLoading: true, error: null })
     
     try {
-      const { ClassService } = await import('../services/supabaseService')
-      const classes = await ClassService.getAllClasses()
+      const { ClassService } = await import('../services/classService')
+      const page = options.page || get().pagination.currentPage || 1
+      const limit = options.limit || get().pagination.limit || 20
+      const result = await ClassService.getAllClasses({ page, limit })
       
       set({
-        classes,
+        classes: result.items,
+        pagination: {
+          currentPage: result.currentPage,
+          totalPages: result.totalPages,
+          totalCount: result.totalCount,
+          limit,
+        },
         isLoading: false,
         error: null
       })
       
-      return classes
+      return result
     } catch (error) {
       set({
         isLoading: false,
@@ -385,7 +399,7 @@ export const useClassStore = create((set, get) => ({
     set({ isLoading: true, error: null })
     
     try {
-      const { ClassService } = await import('../services/supabaseService')
+      const { ClassService } = await import('../services/classService')
       const classData = await ClassService.getClassById(classId)
       
       set({
@@ -408,7 +422,7 @@ export const useClassStore = create((set, get) => ({
     set({ isLoading: true, error: null })
     
     try {
-      const { ClassService } = await import('../services/supabaseService')
+      const { ClassService } = await import('../services/classService')
       const newClass = await ClassService.createClass(classData)
       
       set(state => ({
@@ -431,7 +445,7 @@ export const useClassStore = create((set, get) => ({
     set({ isLoading: true, error: null })
     
     try {
-      const { ClassService } = await import('../services/supabaseService')
+      const { ClassService } = await import('../services/classService')
       const updatedClass = await ClassService.updateClass(classId, classData)
       
       set(state => ({
@@ -457,7 +471,7 @@ export const useClassStore = create((set, get) => ({
     set({ isLoading: true, error: null })
     
     try {
-      const { ClassService } = await import('../services/supabaseService')
+      const { ClassService } = await import('../services/classService')
       await ClassService.deleteClass(classId)
       
       set(state => ({
@@ -477,6 +491,16 @@ export const useClassStore = create((set, get) => ({
 
   clearError: () => {
     set({ error: null })
+  },
+
+  updatePagination: (newPagination) => {
+    set(state => ({
+      pagination: {
+        ...state.pagination,
+        ...(newPagination.page ? { currentPage: newPagination.page } : {}),
+        ...(newPagination.limit ? { limit: newPagination.limit } : {}),
+      }
+    }))
   }
 }))
 
@@ -488,22 +512,36 @@ export const useAttendanceStore = create((set, get) => ({
   isLoading: false,
   error: null,
   stats: null,
+  pagination: {
+    currentPage: 1,
+    totalPages: 1,
+    totalCount: 0,
+    limit: 20,
+  },
 
   // Actions
   fetchAttendanceRecords: async (filters = {}) => {
     set({ isLoading: true, error: null })
     
     try {
-      const { AttendanceService } = await import('../services/supabaseService')
-      const records = await AttendanceService.getAttendanceRecords(filters)
+      const { AttendanceService } = await import('../services/attendanceService')
+      const page = filters.page || get().pagination.currentPage || 1
+      const limit = filters.limit || get().pagination.limit || 20
+      const result = await AttendanceService.getAttendanceRecords({ ...filters, page, limit })
       
       set({
-        attendanceRecords: records,
+        attendanceRecords: result.items,
+        pagination: {
+          currentPage: result.currentPage,
+          totalPages: result.totalPages,
+          totalCount: result.totalCount,
+          limit,
+        },
         isLoading: false,
         error: null
       })
       
-      return records
+      return result
     } catch (error) {
       set({
         isLoading: false,
@@ -517,7 +555,7 @@ export const useAttendanceStore = create((set, get) => ({
     set({ isLoading: true, error: null })
     
     try {
-      const { AttendanceService } = await import('../services/supabaseService')
+      const { AttendanceService } = await import('../services/attendanceService')
       const newRecord = await AttendanceService.markAttendance(attendanceData)
       
       set(state => ({
@@ -540,7 +578,7 @@ export const useAttendanceStore = create((set, get) => ({
     set({ isLoading: true, error: null })
     
     try {
-      const { AttendanceService } = await import('../services/supabaseService')
+      const { AttendanceService } = await import('../services/attendanceService')
       const updatedRecord = await AttendanceService.updateAttendance(attendanceId, attendanceData)
       
       set(state => ({
@@ -566,7 +604,7 @@ export const useAttendanceStore = create((set, get) => ({
     set({ isLoading: true, error: null })
     
     try {
-      const { AttendanceService } = await import('../services/supabaseService')
+      const { AttendanceService } = await import('../services/attendanceService')
       const stats = await AttendanceService.getAttendanceStats(classId, dateRange)
       
       set({

@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { StudentService } from '../services/studentService'
+import { ClassService } from '../services/classService'
 
 // Student Store using Zustand
 export const useStudentStore = create((set, get) => ({
@@ -32,10 +33,17 @@ export const useStudentStore = create((set, get) => ({
       const currentFilters = get().filters
       const currentPagination = get().pagination
       
+      // Normalize pagination options for service (page, limit)
+      const page = options.page || options.currentPage || currentPagination.currentPage || 1
+      const limit = options.limit || currentPagination.limit || 10
+
       const params = {
         ...currentFilters,
-        ...currentPagination,
-        ...options
+        page,
+        limit,
+        ...(options.search ? { search: options.search } : {}),
+        ...(options.sortBy ? { sortBy: options.sortBy } : {}),
+        ...(options.sortOrder ? { sortOrder: options.sortOrder } : {}),
       }
 
       const result = await StudentService.getStudents(params)
@@ -46,7 +54,7 @@ export const useStudentStore = create((set, get) => ({
           currentPage: result.currentPage,
           totalPages: result.totalPages,
           totalCount: result.totalCount,
-          limit: params.limit || currentPagination.limit
+          limit
         },
         loading: false,
         error: null
@@ -186,7 +194,7 @@ export const useStudentStore = create((set, get) => ({
   // Fetch classes
   fetchClasses: async () => {
     try {
-      const classes = await StudentService.getClasses()
+      const classes = await ClassService.getAllClasses()
       
       set({ classes })
       return classes
@@ -220,7 +228,14 @@ export const useStudentStore = create((set, get) => ({
   // Update pagination
   updatePagination: (newPagination) => {
     set(state => ({
-      pagination: { ...state.pagination, ...newPagination }
+      pagination: {
+        ...state.pagination,
+        ...(newPagination.page ? { currentPage: newPagination.page } : {}),
+        ...(newPagination.currentPage ? { currentPage: newPagination.currentPage } : {}),
+        ...(newPagination.limit ? { limit: newPagination.limit } : {}),
+        ...(newPagination.totalPages ? { totalPages: newPagination.totalPages } : {}),
+        ...(newPagination.totalCount ? { totalCount: newPagination.totalCount } : {}),
+      }
     }))
   },
 

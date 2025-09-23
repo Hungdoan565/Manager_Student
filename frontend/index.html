@@ -1,10 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+<link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Student Management System - Hệ thống quản lý sinh viên thông minh</title>
+    <meta name="description" content="Giải pháp quản lý sinh viên toàn diện cho giáo viên và trường học. Điểm danh tự động, báo cáo chi tiết, quản lý lớp học hiệu quả." />
+    <meta name="keywords" content="quản lý sinh viên, điểm danh, giáo dục, trường học, hệ thống quản lý" />
+    <meta name="author" content="SMS Team" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Student Management System" />
+    <meta property="og:description" content="Hệ thống quản lý sinh viên thông minh cho giáo viên và trường học" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sms.edu.vn" />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:locale" content="vi_VN" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Student Management System" />
+    <meta name="twitter:description" content="Hệ thống quản lý sinh viên thông minh" />
+    <meta name="twitter:image" content="/twitter-image.png" />
+    
+    <!-- Theme and App Meta Tags -->
+    <meta name="theme-color" content="#22c55e" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="SMS" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Lora:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Lora:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+    </noscript>
+
+    <!-- Apply theme early to avoid FOUC -->
+    <script>
+      (function() {
+        try {
+          var stored = localStorage.getItem('theme');
+          var sysDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var theme = stored ? stored : (sysDark ? 'dark' : 'light');
+          if (theme === 'dark') document.documentElement.classList.add('dark');
+        } catch(e) { /* ignore */ }
+      })();
+    </script>
+    <meta name="color-scheme" content="light dark" />
   </head>
   <body>
     <div id="root"></div>

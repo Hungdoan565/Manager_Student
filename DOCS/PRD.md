@@ -11,7 +11,7 @@
 
 ### 2. Công nghệ sử dụng
 
-- **Frontend**: Vite + React + TypeScript
+- **Frontend**: Vite + React (JavaScript)
 - **Backend**: Django + Django REST Framework
 - **Database**: Supabase (PostgreSQL)
 - **Deployment**: Vercel (Frontend), Railway/Heroku (Backend)
@@ -90,3 +90,31 @@
 - Tỷ lệ sử dụng > 80% giáo viên
 - Thời gian phản hồi < 2 giây
 - Zero data loss
+
+### 8. Trạng thái hiện tại (v0)
+
+- Frontend viết bằng JavaScript (Vite + React), dùng Zustand cho state, Tailwind cho UI.
+- Frontend kết nối trực tiếp Supabase cho auth và CRUD (services trong `frontend/src/services/`).
+- Backend Django đã khởi tạo dự án `sms_backend` nhưng chưa wire app URLs vào `sms_backend/urls.py` và chưa bật DRF; hiện chỉ có `/admin/`.
+- Database mục tiêu: Supabase PostgreSQL (schema và RLS trong DOCS/supabase_config.md). Ở local, Django mặc định dùng SQLite trừ khi cấu hình `DATABASE_URL`.
+
+### 9. Rủi ro & Giới hạn phiên bản hiện tại
+
+- Khi frontend thao tác trực tiếp Supabase, cần đảm bảo RLS đầy đủ; thiếu RLS có thể gây rò rỉ dữ liệu.
+- Chưa có lớp API trung gian (Django/DRF) nên các nghiệp vụ phức tạp, kiểm soát truy cập theo vai trò nâng cao, và audit tập trung chưa sẵn sàng.
+- Chưa có bộ test tự động frontend/backend; CI chưa cấu hình.
+
+### 10. Kế hoạch nâng cấp đề xuất (ưu tiên)
+
+1) Frontend
+- Thêm kiểm tra phiên đăng nhập sớm khi app khởi động (gọi `checkAuth()` ở root) để tránh redirect sai ở routes bảo vệ.
+- Hợp nhất các service trùng lặp: hiện có `src/services/studentService.js` và các class trong `src/services/supabaseService.js` có phần overlap, cần chọn một nơi duy nhất cho Student/Class/Attendance service.
+- Thêm Vitest + React Testing Library và script `npm run test`.
+
+2) Backend
+- Cài và bật Django REST Framework, CORS headers; thêm app URLs vào `sms_backend/urls.py`; đưa các apps vào `INSTALLED_APPS`.
+- Đọc biến môi trường từ `.env` (ví dụ python-decouple) và không commit `SECRET_KEY`.
+
+3) Quy trình & Tài liệu
+- Bổ sung rules/ (workflow, generate) để chuẩn hóa cách thêm trang/route/store/service, quản lý secrets, và nhánh git.
+- Cập nhật README và WARP.md khi thay đổi lệnh chạy/test.

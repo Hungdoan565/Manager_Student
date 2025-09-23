@@ -6,7 +6,7 @@ Hệ thống quản lý sinh viên dành cho giáo viên với quy mô trung bì
 
 ## Công nghệ sử dụng
 
-- **Frontend**: Vite + React + TypeScript + Tailwind CSS
+- **Frontend**: Vite + React (JavaScript) + Tailwind CSS
 - **Backend**: Django + Django REST Framework
 - **Database**: Supabase (PostgreSQL)
 - **Deployment**: Vercel (Frontend), Railway/Heroku (Backend)
@@ -47,13 +47,27 @@ npm run dev
 
 ```bash
 cd backend
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
+copy .env.example .env  # chỉnh sửa biến môi trường
+# Khởi tạo schema trên Supabase Postgres (chạy một lần hoặc khi có thay đổi model)
+python manage.py makemigrations apps.core_app apps.api
+python manage.py migrate
+# Chạy server
 python manage.py runserver
 ```
 
 ### 2. Cấu hình môi trường
 
-Tạo file `.env` trong thư mục `frontend` và `backend` theo template trong `DOCS/supabase_config.md`
+- Frontend: `.env` theo `frontend/.env.example` (Supabase URL + ANON KEY)
+- Backend: `.env` theo `backend/.env.example`
+  - SECRET_KEY, DEBUG, ALLOWED_HOSTS
+  - DATABASE_URL (Supabase Postgres, sslmode=require)
+  - CORS_ALLOWED_ORIGINS=http://localhost:3000
+  - SUPABASE_URL=https://<project>.supabase.co (dùng để xác thực JWT)
+
+Lưu ý: frontend hiện dùng JavaScript (không phải TypeScript).
 
 ### 3. Database Setup
 

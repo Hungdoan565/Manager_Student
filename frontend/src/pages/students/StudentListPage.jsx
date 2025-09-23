@@ -80,12 +80,31 @@ const StudentListPage = () => {
             <h1 className="text-2xl font-bold text-gray-900">Quản lý sinh viên</h1>
             <p className="text-gray-600 mt-1">Danh sách và quản lý thông tin sinh viên</p>
           </div>
-          <button
-            onClick={handleAdd}
-            className="flex items-center space-x-2 px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
-          >
-            <span>Thêm sinh viên</span>
-          </button>
+          <div className="flex items-center space-x-3">
+            {/* Page size selector */}
+            <div className="flex items-center space-x-2">
+              <span className="text-sm text-gray-600">Hiển thị</span>
+              <select
+                value={pagination.limit}
+                onChange={(e) => {
+                  const limit = Number(e.target.value) || 10
+                  updatePagination({ limit, page: 1 })
+                  fetchStudents({ ...filters, page: 1, limit })
+                }}
+                className="px-3 py-2 border border-gray-300 rounded-lg"
+              >
+                {[10, 20, 50, 100].map(n => (
+                  <option value={n} key={n}>{n}/trang</option>
+                ))}
+              </select>
+            </div>
+            <button
+              onClick={handleAdd}
+              className="flex items-center space-x-2 px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
+            >
+              <span>Thêm sinh viên</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -178,6 +197,29 @@ const StudentListPage = () => {
           pagination={pagination}
         />
       </motion.div>
+
+      {/* Pagination Controls */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 flex items-center justify-between">
+        <div className="text-sm text-gray-600">
+          Trang {pagination.currentPage} / {Math.max(1, pagination.totalPages)} — Tổng {pagination.totalCount}
+        </div>
+        <div className="flex items-center space-x-2">
+          <button
+            onClick={() => pagination.currentPage > 1 && handlePageChange(pagination.currentPage - 1)}
+            className="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50"
+            disabled={pagination.currentPage <= 1}
+          >
+            Trước
+          </button>
+          <button
+            onClick={() => pagination.currentPage < pagination.totalPages && handlePageChange(pagination.currentPage + 1)}
+            className="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50"
+            disabled={pagination.currentPage >= pagination.totalPages}
+          >
+            Sau
+          </button>
+        </div>
+      </div>
 
       {/* Delete Confirmation Modal */}
       {deleteConfirm && (

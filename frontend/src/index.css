@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Generated design tokens */
+@import './styles/design-tokens.css';
+
 /* Custom Dropdown Styles */
 select {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
@@ -54,38 +57,7 @@ select:focus {
 }
 
 :root {
-  --background: #c7e4fe;
-  --foreground: #374151;
-  --card: #c7e4fe;
-  --card-foreground: #374151;
-  --popover: #ffffff;
-  --popover-foreground: #374151;
-  --primary: #22c55e;
-  --primary-foreground: #ffffff;
-  --secondary: #e0f2fe;
-  --secondary-foreground: #4b5563;
-  --muted: #f3f4f6;
-  --muted-foreground: #6b7280;
-  --accent: #d1fae5;
-  --accent-foreground: #374151;
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
-  --border: #e5e7eb;
-  --input: #e5e7eb;
-  --ring: #22c55e;
-  --chart-1: #22c55e;
-  --chart-2: #10b981;
-  --chart-3: #059669;
-  --chart-4: #047857;
-  --chart-5: #065f46;
-  --sidebar: #e0f2fe;
-  --sidebar-foreground: #374151;
-  --sidebar-primary: #22c55e;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #d1fae5;
-  --sidebar-accent-foreground: #374151;
-  --sidebar-border: #e5e7eb;
-  --sidebar-ring: #22c55e;
+  /* Design tokens (colors) are generated in src/styles/design-tokens.css */
   --font-sans: DM Sans, sans-serif;
   --font-serif: Lora, serif;
   --font-mono: IBM Plex Mono, monospace;
@@ -100,53 +72,76 @@ select:focus {
   --shadow-2xl: 0px 4px 8px -1px hsl(0 0% 0% / 0.25);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
+
+  /* Map to --color-* variables used by Tailwind config */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 .dark {
-  --background: #0f172a;
-  --foreground: #f1f5f9;
-  --card: #1e293b;
-  --card-foreground: #f1f5f9;
-  --popover: #1e293b;
-  --popover-foreground: #f1f5f9;
-  --primary: #10b981;
-  --primary-foreground: #0f172a;
-  --secondary: #1e293b;
-  --secondary-foreground: #cbd5e1;
-  --muted: #334155;
-  --muted-foreground: #94a3b8;
-  --accent: #1e293b;
-  --accent-foreground: #cbd5e1;
-  --destructive: #ef4444;
-  --destructive-foreground: #0f172a;
-  --border: #475569;
-  --input: #475569;
-  --ring: #10b981;
-  --chart-1: #10b981;
-  --chart-2: #22c55e;
-  --chart-3: #34d399;
-  --chart-4: #6ee7b7;
-  --chart-5: #a7f3d0;
-  --sidebar: #1e293b;
-  --sidebar-foreground: #f1f5f9;
-  --sidebar-primary: #10b981;
-  --sidebar-primary-foreground: #0f172a;
-  --sidebar-accent: #334155;
-  --sidebar-accent-foreground: #cbd5e1;
-  --sidebar-border: #475569;
-  --sidebar-ring: #10b981;
-  --font-sans: DM Sans, sans-serif;
-  --font-serif: Lora, serif;
-  --font-mono: IBM Plex Mono, monospace;
-  --radius: 0.5rem;
-  --shadow-2xs: 0px 4px 8px -1px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0px 4px 8px -1px hsl(0 0% 0% / 0.05);
-  --shadow-sm: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 1px 2px -2px hsl(0 0% 0% / 0.10);
-  --shadow: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 1px 2px -2px hsl(0 0% 0% / 0.10);
-  --shadow-md: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 2px 4px -2px hsl(0 0% 0% / 0.10);
-  --shadow-lg: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 4px 6px -2px hsl(0 0% 0% / 0.10);
-  --shadow-xl: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 8px 10px -2px hsl(0 0% 0% / 0.10);
-  --shadow-2xl: 0px 4px 8px -1px hsl(0 0% 0% / 0.25);
+  /* Map to --color-* variables used by Tailwind config (dark tokens from design-tokens.css) */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 /* Custom utility classes */
@@ -160,6 +155,15 @@ select:focus {
 .gooey-nav-container {
   position: relative;
   /* Removed background, border, and padding for cleaner look */
+}
+
+/* Reduced Motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Enhanced hover effects with GPU acceleration */

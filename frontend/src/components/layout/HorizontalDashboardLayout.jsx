@@ -17,6 +17,7 @@ import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../../store/authStore'
 import Avatar from '../ui/Avatar'
 import Breadcrumbs from '../ui/Breadcrumbs'
+import ThemeToggle from '../ui/ThemeToggle'
 
 const HorizontalDashboardLayout = () => {
   const { profile, signOut } = useAuthStore()
@@ -88,8 +89,11 @@ const HorizontalDashboardLayout = () => {
 
             {/* Right Side Actions */}
             <div className="flex items-center space-x-4">
+              {/* Theme toggle */}
+              <ThemeToggle />
+
               {/* Notifications */}
-              <button className="relative p-2 text-gray-400 hover:text-gray-600 transition-colors">
+              <button className="relative p-2 text-gray-400 hover:text-gray-600 transition-colors" aria-label="Thông báo">
                 <Bell className="w-5 h-5" />
                 <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
               </button>
@@ -105,6 +109,7 @@ const HorizontalDashboardLayout = () => {
               <button
                 onClick={() => setMobileMenuOpen(true)}
                 className="lg:hidden p-2 text-gray-400 hover:text-gray-600"
+                aria-label="Mở menu"
               >
                 <Menu className="w-6 h-6" />
               </button>

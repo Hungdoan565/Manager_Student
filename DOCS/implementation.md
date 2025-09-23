@@ -2,6 +2,8 @@
 
 ## Hướng dẫn triển khai hệ thống quản lý sinh viên
 
+> Trạng thái hiện tại (v0 → v1): Frontend (Vite + React, JavaScript) dùng Supabase chỉ cho Auth. Backend Django (sms_backend) đã bật DRF + CORS và cung cấp REST API dưới `/api/`. Các endpoint đang hoạt động: `/api/students/`, `/api/classes/` (dựa trên model không quản lý - managed=False - ánh xạ tới bảng Supabase). FE gọi API thay vì truy cập Supabase trực tiếp.
+
 ### 1. Kiến trúc hệ thống
 
 #### 1.1 System Overview
@@ -25,7 +27,13 @@
 - **Icons**: Lucide React
 - **Deployment**: Vercel (Frontend) + Railway (Backend)
 
-#### 1.3 Communication Flow
+### 1.3 Communication Flow
+
+1. Frontend ↔ Backend (DRF): REST API với Authorization: Bearer <Supabase JWT>
+2. Backend (DRF) ↔ Database: Django ORM kết nối Supabase Postgres (DATABASE_URL)
+3. RBAC: DRF đọc role từ bảng profiles (unmanaged) trong DB; fallback role từ JWT claims nếu chưa có
+4. Frontend ↔ Supabase: chỉ cho Auth (signIn/signUp/signOut) để lấy JWT
+5. Real-time/Storage (nếu cần): cân nhắc Supabase Realtime/Storage trong tương lai, nhưng CRUD dữ liệu chính đi qua Backend.
 
 1. **Frontend** ↔ **Backend**: REST API với JWT authentication
 2. **Backend** ↔ **Database**: Django ORM với Supabase connection
@@ -105,6 +113,13 @@ backend/
 ```
 
 ### 3. Database Schema (Supabase)
+
+Schema được quản lý bởi Django migrations (apps.core_app, apps.api). Khi cập nhật models, chạy:
+
+```bash
+python manage.py makemigrations apps.core_app apps.api
+python manage.py migrate
+```
 
 #### 3.1 Core Tables
 
