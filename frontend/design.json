@@ -1,0 +1,591 @@
+{
+  "name": "SMS Design System",
+  "version": "1.0.0",
+  "description": "Design system for Student Management System",
+  "theme": {
+    "name": "Green Education Theme",
+    "description": "Professional green theme suitable for educational institutions"
+  },
+  "colors": {
+    "light": {
+      "background": "#f0f8ff",
+      "foreground": "#374151",
+      "card": "#ffffff",
+      "cardForeground": "#374151",
+      "popover": "#ffffff",
+      "popoverForeground": "#374151",
+      "primary": "#22c55e",
+      "primaryForeground": "#ffffff",
+      "secondary": "#e0f2fe",
+      "secondaryForeground": "#4b5563",
+      "muted": "#f3f4f6",
+      "mutedForeground": "#6b7280",
+      "accent": "#d1fae5",
+      "accentForeground": "#374151",
+      "destructive": "#ef4444",
+      "destructiveForeground": "#ffffff",
+      "border": "#e5e7eb",
+      "input": "#e5e7eb",
+      "ring": "#22c55e",
+      "chart": {
+        "1": "#22c55e",
+        "2": "#10b981",
+        "3": "#059669",
+        "4": "#047857",
+        "5": "#065f46"
+      },
+      "sidebar": {
+        "background": "#e0f2fe",
+        "foreground": "#374151",
+        "primary": "#22c55e",
+        "primaryForeground": "#ffffff",
+        "accent": "#d1fae5",
+        "accentForeground": "#374151",
+        "border": "#e5e7eb",
+        "ring": "#22c55e"
+      }
+    },
+    "dark": {
+      "background": "#0f172a",
+      "foreground": "#d1d5db",
+      "card": "#1e293b",
+      "cardForeground": "#d1d5db",
+      "popover": "#1e293b",
+      "popoverForeground": "#d1d5db",
+      "primary": "#34d399",
+      "primaryForeground": "#0f172a",
+      "secondary": "#2d3748",
+      "secondaryForeground": "#a1a1aa",
+      "muted": "#1e293b",
+      "mutedForeground": "#6b7280",
+      "accent": "#374151",
+      "accentForeground": "#a1a1aa",
+      "destructive": "#ef4444",
+      "destructiveForeground": "#0f172a",
+      "border": "#4b5563",
+      "input": "#4b5563",
+      "ring": "#34d399",
+      "chart": {
+        "1": "#34d399",
+        "2": "#2dd4bf",
+        "3": "#22c55e",
+        "4": "#10b981",
+        "5": "#059669"
+      },
+      "sidebar": {
+        "background": "#1e293b",
+        "foreground": "#d1d5db",
+        "primary": "#34d399",
+        "primaryForeground": "#0f172a",
+        "accent": "#374151",
+        "accentForeground": "#a1a1aa",
+        "border": "#4b5563",
+        "ring": "#34d399"
+      }
+    },
+    "semantic": {
+      "success": "#10b981",
+      "warning": "#f59e0b",
+      "error": "#ef4444",
+      "info": "#3b82f6"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "sans": ["DM Sans", "system-ui", "sans-serif"],
+      "serif": ["Lora", "serif"],
+      "mono": ["IBM Plex Mono", "monospace"]
+    },
+    "fontSize": {
+      "xs": "0.75rem",
+      "sm": "0.875rem",
+      "base": "1rem",
+      "lg": "1.125rem",
+      "xl": "1.25rem",
+      "2xl": "1.5rem",
+      "3xl": "1.875rem",
+      "4xl": "2.25rem"
+    },
+    "fontWeight": {
+      "light": "300",
+      "normal": "400",
+      "medium": "500",
+      "semibold": "600",
+      "bold": "700"
+    },
+    "lineHeight": {
+      "tight": "1.25",
+      "snug": "1.375",
+      "normal": "1.5",
+      "relaxed": "1.625",
+      "loose": "2"
+    }
+  },
+  "spacing": {
+    "0": "0",
+    "1": "0.25rem",
+    "2": "0.5rem",
+    "3": "0.75rem",
+    "4": "1rem",
+    "5": "1.25rem",
+    "6": "1.5rem",
+    "8": "2rem",
+    "10": "2.5rem",
+    "12": "3rem",
+    "16": "4rem",
+    "20": "5rem",
+    "24": "6rem",
+    "32": "8rem"
+  },
+  "borderRadius": {
+    "none": "0",
+    "sm": "0.125rem",
+    "md": "0.375rem",
+    "lg": "0.5rem",
+    "xl": "0.75rem",
+    "2xl": "1rem",
+    "3xl": "1.5rem",
+    "full": "9999px"
+  },
+  "shadows": {
+    "sm": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+    "md": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+    "lg": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+    "xl": "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+    "2xl": "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+  },
+  "components": {
+    "button": {
+      "variants": {
+        "primary": {
+          "background": "var(--color-primary)",
+          "color": "var(--color-primary-foreground)",
+          "hover": "var(--color-primary)/90",
+          "focus": "var(--color-primary)"
+        },
+        "secondary": {
+          "background": "var(--color-secondary)",
+          "color": "var(--color-secondary-foreground)",
+          "hover": "var(--color-secondary)/90",
+          "focus": "var(--color-secondary)"
+        },
+        "destructive": {
+          "background": "var(--color-destructive)",
+          "color": "var(--color-destructive-foreground)",
+          "hover": "var(--color-destructive)/90",
+          "focus": "var(--color-destructive)"
+        },
+        "outline": {
+          "background": "transparent",
+          "color": "var(--color-foreground)",
+          "border": "1px solid var(--color-border)",
+          "hover": "var(--color-accent)",
+          "focus": "var(--color-ring)"
+        },
+        "ghost": {
+          "background": "transparent",
+          "color": "var(--color-foreground)",
+          "hover": "var(--color-accent)",
+          "focus": "var(--color-ring)"
+        },
+        "link": {
+          "background": "transparent",
+          "color": "var(--color-primary)",
+          "textDecoration": "underline",
+          "hover": "underline",
+          "focus": "var(--color-ring)"
+        }
+      },
+      "sizes": {
+        "sm": {
+          "height": "2.25rem",
+          "padding": "0.5rem 0.75rem",
+          "fontSize": "0.875rem"
+        },
+        "md": {
+          "height": "2.5rem",
+          "padding": "0.5rem 1rem",
+          "fontSize": "0.875rem"
+        },
+        "lg": {
+          "height": "2.75rem",
+          "padding": "0.5rem 2rem",
+          "fontSize": "1rem"
+        },
+        "icon": {
+          "height": "2.5rem",
+          "width": "2.5rem",
+          "padding": "0"
+        }
+      }
+    },
+    "input": {
+      "base": {
+        "display": "flex",
+        "height": "2.5rem",
+        "width": "100%",
+        "borderRadius": "0.375rem",
+        "border": "1px solid var(--color-input)",
+        "background": "var(--color-background)",
+        "padding": "0.5rem 0.75rem",
+        "fontSize": "0.875rem",
+        "transition": "border-color 0.2s"
+      },
+      "focus": {
+        "outline": "none",
+        "borderColor": "var(--color-ring)",
+        "boxShadow": "0 0 0 2px var(--color-ring)/20"
+      },
+      "disabled": {
+        "opacity": "0.5",
+        "cursor": "not-allowed"
+      },
+      "error": {
+        "borderColor": "var(--color-destructive)"
+      }
+    },
+    "card": {
+      "base": {
+        "background": "var(--color-card)",
+        "color": "var(--color-card-foreground)",
+        "borderRadius": "0.5rem",
+        "border": "1px solid var(--color-border)",
+        "boxShadow": "0 1px 3px 0 rgba(0, 0, 0, 0.1)"
+      },
+      "header": {
+        "padding": "1.5rem 1.5rem 0 1.5rem"
+      },
+      "content": {
+        "padding": "1.5rem"
+      },
+      "footer": {
+        "padding": "0 1.5rem 1.5rem 1.5rem"
+      }
+    },
+    "table": {
+      "base": {
+        "width": "100%",
+        "borderCollapse": "collapse",
+        "background": "var(--color-card)",
+        "borderRadius": "0.5rem",
+        "overflow": "hidden",
+        "boxShadow": "0 1px 3px 0 rgba(0, 0, 0, 0.1)"
+      },
+      "header": {
+        "background": "var(--color-muted)",
+        "padding": "0.75rem 1rem",
+        "textAlign": "left",
+        "fontWeight": "600",
+        "color": "var(--color-muted-foreground)",
+        "borderBottom": "1px solid var(--color-border)"
+      },
+      "cell": {
+        "padding": "0.75rem 1rem",
+        "borderBottom": "1px solid var(--color-border)",
+        "color": "var(--color-foreground)"
+      },
+      "row": {
+        "hover": "var(--color-muted)/50"
+      }
+    },
+    "badge": {
+      "base": {
+        "display": "inline-flex",
+        "alignItems": "center",
+        "borderRadius": "9999px",
+        "fontSize": "0.75rem",
+        "fontWeight": "500",
+        "padding": "0.25rem 0.75rem"
+      },
+      "variants": {
+        "default": {
+          "background": "var(--color-primary)",
+          "color": "var(--color-primary-foreground)"
+        },
+        "secondary": {
+          "background": "var(--color-secondary)",
+          "color": "var(--color-secondary-foreground)"
+        },
+        "destructive": {
+          "background": "var(--color-destructive)",
+          "color": "var(--color-destructive-foreground)"
+        },
+        "outline": {
+          "background": "transparent",
+          "color": "var(--color-foreground)",
+          "border": "1px solid var(--color-border)"
+        }
+      }
+    }
+  },
+  "layout": {
+    "container": {
+      "maxWidth": "1200px",
+      "margin": "0 auto",
+      "padding": "0 1rem"
+    },
+    "sidebar": {
+      "width": "16rem",
+      "background": "var(--color-sidebar)",
+      "borderRight": "1px solid var(--color-sidebar-border)",
+      "height": "100vh",
+      "position": "fixed",
+      "left": "0",
+      "top": "0",
+      "overflowY": "auto"
+    },
+    "header": {
+      "height": "4rem",
+      "background": "var(--color-card)",
+      "borderBottom": "1px solid var(--color-border)",
+      "display": "flex",
+      "alignItems": "center",
+      "justifyContent": "space-between",
+      "padding": "0 1.5rem",
+      "position": "sticky",
+      "top": "0",
+      "zIndex": "10"
+    },
+    "main": {
+      "padding": "1.5rem",
+      "marginLeft": "16rem"
+    },
+    "grid": {
+      "display": "grid",
+      "gap": "1.5rem"
+    },
+    "breakpoints": {
+      "sm": "640px",
+      "md": "768px",
+      "lg": "1024px",
+      "xl": "1280px",
+      "2xl": "1536px"
+    }
+  },
+  "animations": {
+    "fadeIn": {
+      "from": {
+        "opacity": "0",
+        "transform": "translateY(10px)"
+      },
+      "to": {
+        "opacity": "1",
+        "transform": "translateY(0)"
+      },
+      "duration": "0.3s",
+      "easing": "ease-in-out"
+    },
+    "slideIn": {
+      "from": {
+        "transform": "translateX(-100%)"
+      },
+      "to": {
+        "transform": "translateX(0)"
+      },
+      "duration": "0.3s",
+      "easing": "ease-out"
+    },
+    "slideUp": {
+      "from": {
+        "transform": "translateY(100%)"
+      },
+      "to": {
+        "transform": "translateY(0)"
+      },
+      "duration": "0.3s",
+      "easing": "ease-out"
+    },
+    "slideDown": {
+      "from": {
+        "transform": "translateY(-100%)"
+      },
+      "to": {
+        "transform": "translateY(0)"
+      },
+      "duration": "0.3s",
+      "easing": "ease-out"
+    }
+  },
+  "accessibility": {
+    "focusRing": {
+      "outline": "2px solid var(--color-ring)",
+      "outlineOffset": "2px"
+    },
+    "contrast": {
+      "minimum": "4.5:1",
+      "enhanced": "7:1"
+    },
+    "fontSize": {
+      "minimum": "16px",
+      "recommended": "18px"
+    }
+  },
+  "icons": {
+    "library": "Lucide React",
+    "size": {
+      "sm": "1rem",
+      "md": "1.25rem",
+      "lg": "1.5rem",
+      "xl": "2rem"
+    },
+    "stroke": "1.5"
+  },
+  "forms": {
+    "validation": {
+      "library": "Zod",
+      "errorStyle": {
+        "color": "var(--color-destructive)",
+        "fontSize": "0.875rem",
+        "marginTop": "0.25rem"
+      }
+    },
+    "spacing": {
+      "fieldGap": "1rem",
+      "sectionGap": "1.5rem"
+    }
+  },
+  "charts": {
+    "library": "Recharts",
+    "colors": [
+      "var(--color-chart-1)",
+      "var(--color-chart-2)",
+      "var(--color-chart-3)",
+      "var(--color-chart-4)",
+      "var(--color-chart-5)"
+    ],
+    "responsive": true
+  },
+  "tables": {
+    "library": "TanStack Table",
+    "features": [
+      "sorting",
+      "filtering",
+      "pagination",
+      "columnResizing",
+      "rowSelection"
+    ]
+  },
+  "stateManagement": {
+    "library": "Zustand",
+    "devtools": true,
+    "persistence": "localStorage"
+  },
+  "routing": {
+    "library": "React Router DOM",
+    "lazyLoading": true,
+    "codeSplitting": true
+  },
+  "testing": {
+    "unit": "React Testing Library + Jest",
+    "e2e": "Playwright",
+    "coverage": "80%"
+  },
+  "build": {
+    "bundler": "Vite",
+    "css": "Tailwind CSS",
+    "optimization": {
+      "treeShaking": true,
+      "codeSplitting": true,
+      "lazyLoading": true
+    }
+  },
+  "roles": {
+    "teacher": {
+      "name": "Teacher",
+      "description": "Educators and instructors with full system access",
+      "permissions": [
+        "student_management",
+        "class_management", 
+        "attendance_management",
+        "schedule_management",
+        "reports_analytics",
+        "system_settings",
+        "user_management"
+      ],
+      "ui": {
+        "navigation": "full",
+        "dashboard": "comprehensive",
+        "actions": "all",
+        "dataAccess": "unlimited"
+      },
+      "colors": {
+        "primary": "var(--color-primary)",
+        "accent": "var(--color-accent)",
+        "background": "var(--color-background)"
+      }
+    },
+    "student": {
+      "name": "Student", 
+      "description": "Students with limited, personal-data-only access",
+      "permissions": [
+        "view_personal_data",
+        "mark_attendance",
+        "view_schedule",
+        "view_personal_reports"
+      ],
+      "ui": {
+        "navigation": "limited",
+        "dashboard": "personal",
+        "actions": "restricted",
+        "dataAccess": "personal_only"
+      },
+      "colors": {
+        "primary": "var(--color-secondary)",
+        "accent": "var(--color-muted)",
+        "background": "var(--color-background)"
+      },
+      "restrictions": {
+        "cannotCreateStudents": true,
+        "cannotManageClasses": true,
+        "cannotAccessOtherStudents": true,
+        "cannotGenerateSystemReports": true,
+        "cannotModifySystemSettings": true,
+        "cannotManageUsers": true
+      }
+    }
+  },
+  "security": {
+    "authentication": {
+      "method": "JWT",
+      "sessionTimeout": "8h",
+      "refreshToken": true,
+      "multiFactor": false
+    },
+    "authorization": {
+      "model": "RBAC",
+      "enforcement": "server_side",
+      "auditLogging": true,
+      "permissionValidation": "real_time"
+    },
+    "dataProtection": {
+      "encryption": "AES-256",
+      "dataIsolation": true,
+      "accessLogging": true,
+      "privacyCompliance": "FERPA"
+    }
+  },
+  "guidelines": {
+    "naming": {
+      "components": "PascalCase",
+      "files": "kebab-case",
+      "variables": "camelCase",
+      "constants": "UPPER_SNAKE_CASE"
+    },
+    "structure": {
+      "atomic": true,
+      "composition": true,
+      "reusability": true
+    },
+    "performance": {
+      "bundleSize": "< 500KB",
+      "firstLoad": "< 3s",
+      "interaction": "< 100ms"
+    },
+    "security": {
+      "roleBasedAccess": true,
+      "permissionValidation": "client_server",
+      "dataIsolation": "strict",
+      "auditTrail": "comprehensive"
+    }
+  }
+}

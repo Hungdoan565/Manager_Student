@@ -1,0 +1,123 @@
+name: Bug Report
+description: Report a bug
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to fill out this bug report!
+
+  - type: input
+    id: bug-id
+    attributes:
+      label: Bug ID
+      description: "Format: BUG-YYYY-MM-DD-XXX"
+      placeholder: "BUG-2024-01-15-001"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Critical (P0)
+        - High (P1)
+        - Medium (P2)
+        - Low (P3)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - Urgent
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - Frontend
+        - Backend
+        - Database
+        - API
+    validations:
+      required: true
+
+  - type: dropdown
+    id: module
+    attributes:
+      label: Module
+      options:
+        - Authentication
+        - Classes
+        - Students
+        - Attendance
+        - Schedules
+        - Reports
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: "Detailed description of the bug"
+      placeholder: "Describe the bug in detail..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: "Step-by-step instructions to reproduce the bug"
+      placeholder: |
+        1. Go to...
+        2. Click on...
+        3. See error...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: "What should happen?"
+      placeholder: "Describe what should happen..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: "What actually happens?"
+      placeholder: "Describe what actually happens..."
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: "OS, Browser, Device, etc."
+      placeholder: "Windows 10, Chrome 120, Desktop"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Information
+      description: "Screenshots, error messages, console logs, etc."
+      placeholder: "Any additional information that might be helpful..."
