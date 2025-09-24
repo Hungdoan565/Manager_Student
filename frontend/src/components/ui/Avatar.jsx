@@ -41,7 +41,7 @@ const Avatar = ({ user, onSignOut, onSettings }) => {
         onClick={() => setIsOpen(!isOpen)}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-100 transition-all duration-200 group"
+        className="flex items-center space-x-3 p-2 rounded-lg hover:bg-muted transition-all duration-200 group"
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
@@ -98,7 +98,7 @@ const Avatar = ({ user, onSignOut, onSettings }) => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-gray-200 z-50 overflow-hidden"
+              className="absolute right-0 mt-2 w-80 bg-card rounded-xl shadow-xl border border-border z-50 overflow-hidden"
             >
               {/* Header */}
               <div className="bg-gradient-to-r from-emerald-500 to-green-600 p-6 text-white">
@@ -130,14 +130,14 @@ const Avatar = ({ user, onSignOut, onSettings }) => {
                     onSettings?.()
                     setIsOpen(false)
                   }}
-                  className="flex items-center space-x-3 w-full px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors group"
+                  className="flex items-center space-x-3 w-full px-4 py-3 text-foreground hover:bg-muted transition-colors group"
                 >
-                  <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-emerald-100 transition-colors">
-                    <Settings className="w-4 h-4 text-gray-600 group-hover:text-emerald-600" />
+                  <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center group-hover:bg-emerald-100 transition-colors">
+                    <Settings className="w-4 h-4 text-muted-foreground group-hover:text-emerald-600" />
                   </div>
                   <div className="text-left">
                     <p className="font-medium">Cài đặt tài khoản</p>
-                    <p className="text-xs text-gray-500">Quản lý thông tin cá nhân</p>
+                    <p className="text-xs text-muted-foreground">Quản lý thông tin cá nhân</p>
                   </div>
                 </button>
 
@@ -146,18 +146,18 @@ const Avatar = ({ user, onSignOut, onSettings }) => {
                     onSettings?.()
                     setIsOpen(false)
                   }}
-                  className="flex items-center space-x-3 w-full px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors group"
+                  className="flex items-center space-x-3 w-full px-4 py-3 text-foreground hover:bg-muted transition-colors group"
                 >
-                  <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-blue-100 transition-colors">
-                    <User className="w-4 h-4 text-gray-600 group-hover:text-blue-600" />
+                  <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+                    <User className="w-4 h-4 text-muted-foreground group-hover:text-blue-600" />
                   </div>
                   <div className="text-left">
                     <p className="font-medium">Hồ sơ cá nhân</p>
-                    <p className="text-xs text-gray-500">Xem và chỉnh sửa hồ sơ</p>
+                    <p className="text-xs text-muted-foreground">Xem và chỉnh sửa hồ sơ</p>
                   </div>
                 </button>
 
-                <div className="border-t border-gray-100 my-2"></div>
+                <div className="border-t border-border my-2"></div>
 
                 <button
                   onClick={() => {

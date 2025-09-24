@@ -193,8 +193,8 @@ const StudentTable = ({
                 
                 <td className="py-4 px-6">
                   <div>
-                    <p className="font-medium text-gray-900">{getClassInfo(student.class_id)?.name || 'Chưa phân lớp'}</p>
-                    <p className="text-sm text-gray-500">{getClassInfo(student.class_id)?.grade || ''}</p>
+                    <p className="font-medium text-gray-900">{student.class?.name || getClassInfo(student.class_id)?.name || 'Chưa phân lớp'}</p>
+                    <p className="text-sm text-gray-500">{student.class?.grade || getClassInfo(student.class_id)?.grade || ''}</p>
                   </div>
                 </td>
                 

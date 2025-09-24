@@ -10,11 +10,11 @@ const Benefits = () => {
   ]
 
   return (
-    <section id="benefits" className="py-20 bg-card">
+    <section id="benefits" className="py-20 bg-card scroll-mt-24 md:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">Tại sao chọn hệ thống của chúng tôi?</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-16">Được thiết kế đặc biệt cho môi trường giáo dục Việt Nam</p>
+          <h2 className="text-4xl font-bold text-foreground mb-6">Tại sao chọn hệ thống của chúng tôi?</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-16">Được thiết kế đặc biệt cho môi trường giáo dục Việt Nam</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

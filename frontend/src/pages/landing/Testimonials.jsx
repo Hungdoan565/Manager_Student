@@ -26,11 +26,11 @@ const Testimonials = () => {
   ]
 
   return (
-    <section id="testimonials" className="py-20 bg-card">
+    <section id="testimonials" className="py-20 bg-card scroll-mt-24 md:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">Được tin tưởng bởi giáo viên</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-16">Những chia sẻ thực tế từ các giáo viên đang sử dụng hệ thống</p>
+          <h2 className="text-4xl font-bold text-foreground mb-6">Được tin tưởng bởi giáo viên</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-16">Những chia sẻ thực tế từ các giáo viên đang sử dụng hệ thống</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

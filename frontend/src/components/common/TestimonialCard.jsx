@@ -15,7 +15,7 @@ const TestimonialCard = ({
 
   return (
     <motion.div
-      className={`group bg-background p-8 rounded-2xl border border-border hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 transform hover:-translate-y-2 hover:border-primary/20 ${className}`}
+      className={`group bg-card p-8 rounded-2xl border border-border hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 transform hover:-translate-y-2 hover:border-primary/20 ${className}`}
       initial={{ opacity: 0, y: 30, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{

@@ -94,6 +94,43 @@ Chạy các migration SQL trong Supabase dashboard hoặc sử dụng script mig
 - **Phase 3** (3 tuần): Thời khóa biểu, báo cáo
 - **Phase 4** (2 tuần): Testing, optimization, deployment
 
+## Database constraints (Supabase Postgres)
+
+If you already have existing tables in Supabase, running Django migrations to create tables may conflict with existing schema. Options:
+- Fresh database: run migrations normally.
+- Existing database: apply only the necessary constraints manually and skip table creation.
+
+Recommended constraints:
+- students: unique(student_code)
+- attendance: unique(student_id, class_id, date)
+
+Example SQL to run in Supabase SQL Editor:
+- ALTER TABLE students ADD CONSTRAINT uniq_students_student_code UNIQUE (student_code);
+- ALTER TABLE attendance ADD CONSTRAINT uniq_attendance_student_class_date UNIQUE (student_id, class_id, date);
+
+## Endpoints (mở rộng)
+
+- Students
+  - GET /api/students/?page=&page_size=&search=&ordering=&expand=class
+  - GET /api/students/export[?class_id=]
+  - POST /api/students/import (multipart/form-data, file=CSV; columns: student_code,full_name,email,class_id,phone,is_active)
+- Classes
+  - GET /api/classes/?page=&page_size=&search=&ordering=
+  - GET /api/classes/export
+  - POST /api/classes/import (multipart/form-data, file=CSV; columns: name,grade,description,max_students,teacher_id,academic_year_id,is_active)
+  - GET /api/classes/{id}/students
+- Attendance
+  - GET /api/attendance/?expand=student,class&status=&class_id=&date=
+  - POST /api/attendance/ (unique per student/class/date)
+  - GET /api/attendance/reports?class_id=&start_date=&end_date=&status=
+  - GET /api/attendance/reports/timeseries?class_id=&start_date=&end_date=&status=
+  - GET /api/attendance/reports/export?class_id=&start_date=&end_date=&status=
+
+## CI
+
+- Frontend CI: lint + vitest trên GitHub Actions (workflow: .github/workflows/frontend-ci.yml)
+- Backend CI: makemigrations (ephemeral) + migrate (SQLite) + Django tests (workflow: .github/workflows/backend-ci.yml)
+
 ## Contributing
 
 1. Fork the repository

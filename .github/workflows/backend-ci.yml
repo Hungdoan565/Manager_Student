@@ -1,0 +1,61 @@
+name: Backend CI
+
+on:
+  push:
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend-ci.yml'
+  pull_request:
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend-ci.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        working-directory: backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Make migrations (generate ephemeral migration files)
+        working-directory: backend
+        env:
+          SECRET_KEY: test-secret
+          DEBUG: 'True'
+        run: |
+          python manage.py makemigrations apps.core_app apps.api --noinput
+
+      - name: Run migrations (SQLite)
+        working-directory: backend
+        env:
+          SECRET_KEY: test-secret
+          DEBUG: 'True'
+        run: |
+          python manage.py migrate --noinput
+
+      - name: Run tests
+        working-directory: backend
+        env:
+          SECRET_KEY: test-secret
+          DEBUG: 'True'
+        run: |
+          python manage.py test --noinput --verbosity 2

@@ -3,10 +3,10 @@ const TrustIndicators = () => {
     <section className="py-16 bg-background" aria-labelledby="trust-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 id="trust-heading" className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 id="trust-heading" className="text-3xl font-bold text-foreground mb-4">
             Được tin tưởng bởi hàng nghìn giáo viên
           </h2>
-          <p className="text-xl text-gray-600">Thống kê thực tế từ người dùng</p>
+          <p className="text-xl text-muted-foreground">Thống kê thực tế từ người dùng</p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">

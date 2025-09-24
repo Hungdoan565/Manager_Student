@@ -51,51 +51,51 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" className="py-20 bg-card" aria-labelledby="contact-heading">
+    <section id="contact" className="py-20 bg-card scroll-mt-24 md:scroll-mt-28" aria-labelledby="contact-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 id="contact-heading" className="text-4xl font-bold text-gray-900 mb-6">Liên hệ với chúng tôi</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">Cần hỗ trợ hoặc có câu hỏi? Chúng tôi luôn sẵn sàng giúp!</p>
+          <h2 id="contact-heading" className="text-4xl font-bold text-foreground mb-6">Liên hệ với chúng tôi</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Cần hỗ trợ hoặc có câu hỏi? Chúng tôi luôn sẵn sàng giúp!</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <div className="flex items-start space-x-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-x-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div className="group flex items-start space-x-4 pl-4 py-3 border-l border-primary/20 rounded-lg hover:bg-muted/30 transition-colors">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center" aria-hidden="true">
                 <Phone className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Điện thoại</h3>
-                <p className="text-gray-600">Hotline: 1900 1234</p>
-                <p className="text-gray-600">Hỗ trợ: 8:00 - 17:00 (T2-T6)</p>
+                <h3 className="text-lg font-semibold text-foreground mb-2">Điện thoại</h3>
+                <p className="text-muted-foreground">Hotline: 1900 1234</p>
+                <p className="text-muted-foreground">Hỗ trợ: 8:00 - 17:00 (T2-T6)</p>
               </div>
             </div>
 
-            <div className="flex items-start space-x-4">
+            <div className="group flex items-start space-x-4 pl-4 py-3 border-l border-primary/20 rounded-lg hover:bg-muted/30 transition-colors">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center" aria-hidden="true">
                 <Mail className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Email</h3>
-                <p className="text-gray-600">support@sms.edu.vn</p>
-                <p className="text-gray-600">Phản hồi trong 24h</p>
+                <h3 className="text-lg font-semibold text-foreground mb-2">Email</h3>
+                <p className="text-muted-foreground">support@sms.edu.vn</p>
+                <p className="text-muted-foreground">Phản hồi trong 24h</p>
               </div>
             </div>
 
-            <div className="flex items-start space-x-4">
+            <div className="group flex items-start space-x-4 pl-4 py-3 border-l border-primary/20 rounded-lg hover:bg-muted/30 transition-colors">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center" aria-hidden="true">
                 <MessageSquare className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Chat trực tuyến</h3>
-                <p className="text-gray-600">Hỗ trợ trực tiếp</p>
-                <p className="text-gray-600">8:00 - 17:00 hàng ngày</p>
+                <h3 className="text-lg font-semibold text-foreground mb-2">Chat trực tuyến</h3>
+                <p className="text-muted-foreground">Hỗ trợ trực tiếp</p>
+                <p className="text-muted-foreground">8:00 - 17:00 hàng ngày</p>
               </div>
             </div>
 
-            <div className="bg-primary/5 rounded-xl p-6">
-              <h4 className="text-lg font-semibold text-gray-900 mb-3">Tại sao chọn chúng tôi?</h4>
-              <ul className="space-y-2 text-gray-600">
+            <div className="sm:col-span-2 pl-4 py-4 border-l border-primary/20 rounded-lg hover:bg-muted/30 transition-colors">
+              <h4 className="text-lg font-semibold text-foreground mb-3">Tại sao chọn chúng tôi?</h4>
+              <ul className="space-y-2 text-muted-foreground">
                 <li className="flex items-center">
                   <Check className="w-4 h-4 text-primary mr-2" /> Hỗ trợ 24/7 cho giáo viên
                 </li>
@@ -112,20 +112,21 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl border border-border p-8 shadow-sm">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Gửi tin nhắn</h3>
+          <div className="lg:border-l lg:border-border lg:pl-10">
+            <div className="bg-card rounded-xl border border-border p-8 shadow-sm">
+            <h3 className="text-2xl font-bold text-foreground mb-6">Gửi tin nhắn</h3>
             <form onSubmit={handleSubmit} className="space-y-6" aria-describedby="contact-required">
               <span id="contact-required" className="sr-only">Các trường có dấu * là bắt buộc.</span>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Họ và tên *</label>
+                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">Họ và tên *</label>
                   <input
                     type="text"
                     id="name"
                     name="name"
                     value={contactForm.name}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent ${formErrors.name ? 'border-red-500' : 'border-gray-300'}`}
+className={`w-full px-4 py-3 bg-card text-foreground placeholder:text-muted-foreground/70 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent ${formErrors.name ? 'border-red-500' : 'border-border'}`}
                     placeholder="Nhập họ và tên"
                     aria-invalid={!!formErrors.name}
                     aria-describedby={formErrors.name ? 'name-error' : undefined}
@@ -133,14 +134,14 @@ const Contact = () => {
                   {formErrors.name && <p id="name-error" className="mt-1 text-sm text-red-600" role="alert">{formErrors.name}</p>}
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">Email *</label>
                   <input
                     type="email"
                     id="email"
                     name="email"
                     value={contactForm.email}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent ${formErrors.email ? 'border-red-500' : 'border-gray-300'}`}
+className={`w-full px-4 py-3 bg-card text-foreground placeholder:text-muted-foreground/70 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent ${formErrors.email ? 'border-red-500' : 'border-border'}`}
                     placeholder="email@truong.edu.vn"
                     aria-invalid={!!formErrors.email}
                     aria-describedby={formErrors.email ? 'email-error' : undefined}
@@ -151,14 +152,14 @@ const Contact = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="school" className="block text-sm font-medium text-gray-700 mb-2">Tên trường học *</label>
+                  <label htmlFor="school" className="block text-sm font-medium text-foreground mb-2">Tên trường học *</label>
                   <input
                     type="text"
                     id="school"
                     name="school"
                     value={contactForm.school}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent ${formErrors.school ? 'border-red-500' : 'border-gray-300'}`}
+className={`w-full px-4 py-3 bg-card text-foreground placeholder:text-muted-foreground/70 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent ${formErrors.school ? 'border-red-500' : 'border-border'}`}
                     placeholder="THPT Nguyễn Du"
                     aria-invalid={!!formErrors.school}
                     aria-describedby={formErrors.school ? 'school-error' : undefined}
@@ -166,14 +167,14 @@ const Contact = () => {
                   {formErrors.school && <p id="school-error" className="mt-1 text-sm text-red-600" role="alert">{formErrors.school}</p>}
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">Số điện thoại *</label>
+                  <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">Số điện thoại *</label>
                   <input
                     type="tel"
                     id="phone"
                     name="phone"
                     value={contactForm.phone}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent ${formErrors.phone ? 'border-red-500' : 'border-gray-300'}`}
+className={`w-full px-4 py-3 bg-card text-foreground placeholder:text-muted-foreground/70 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent ${formErrors.phone ? 'border-red-500' : 'border-border'}`}
                     placeholder="0123 456 789"
                     aria-invalid={!!formErrors.phone}
                     aria-describedby={formErrors.phone ? 'phone-error' : undefined}
@@ -183,14 +184,14 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Nội dung tin nhắn *</label>
+                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">Nội dung tin nhắn *</label>
                 <textarea
                   id="message"
                   name="message"
                   rows={5}
                   value={contactForm.message}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent ${formErrors.message ? 'border-red-500' : 'border-gray-300'}`}
+className={`w-full px-4 py-3 bg-card text-foreground placeholder:text-muted-foreground/70 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent ${formErrors.message ? 'border-red-500' : 'border-border'}`}
                   placeholder="Mô tả chi tiết về nhu cầu của bạn..."
                   aria-invalid={!!formErrors.message}
                   aria-describedby={formErrors.message ? 'message-error' : undefined}
@@ -216,6 +217,7 @@ const Contact = () => {
                 )}
               </button>
             </form>
+          </div>
           </div>
         </div>
       </div>

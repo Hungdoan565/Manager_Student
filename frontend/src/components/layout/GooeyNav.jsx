@@ -44,13 +44,13 @@ const GooeyNav = ({
           const isActive = index === activeIndex;
           
           return (
-            <motion.button
+              <motion.button
               key={index}
               onClick={() => handleItemClick(index, item)}
               className={`relative flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
                 isActive 
-                  ? 'bg-white text-primary shadow-lg' 
-                  : 'text-gray-600 hover:text-primary hover:bg-white/80'
+                  ? 'bg-muted text-foreground shadow-sm' 
+                  : 'text-muted-foreground hover:text-foreground hover:bg-muted'
               }`}
               whileHover={{ 
                 scale: 1.02,
@@ -69,7 +69,7 @@ const GooeyNav = ({
               <AnimatePresence mode="wait">
                 {isActive && (
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-primary/10 to-emerald-500/10 rounded-lg"
+                    className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}

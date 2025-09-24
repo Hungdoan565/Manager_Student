@@ -30,4 +30,23 @@ export class ClassService {
     await api.delete(`/classes/${id}/`)
     return { success: true }
   }
+
+  static async getStudentsOfClass(classId) {
+    const { data } = await api.get(`/classes/${classId}/students/`)
+    return data
+  }
+
+  static async exportCsv() {
+    const res = await api.get('/classes/export', { responseType: 'blob' })
+    return res.data
+  }
+
+  static async importCsv(file) {
+    const form = new FormData()
+    form.append('file', file)
+    const { data } = await api.post('/classes/import', form, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    })
+    return data
+  }
 }

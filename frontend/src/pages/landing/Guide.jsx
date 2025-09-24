@@ -4,11 +4,11 @@ import TiltedGuideCard from '../../components/common/TiltedGuideCard'
 
 const Guide = () => {
   return (
-    <section id="guide" className="py-20 bg-card">
+    <section id="guide" className="py-20 bg-card scroll-mt-24 md:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Hướng dẫn sử dụng nhanh</h2>
+            <h2 className="text-4xl font-bold text-foreground mb-6">Hướng dẫn sử dụng nhanh</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">Bắt đầu sử dụng hệ thống chỉ trong vài bước đơn giản</p>
           </motion.div>
         </div>

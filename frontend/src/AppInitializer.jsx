@@ -8,6 +8,12 @@ export default function AppInitializer({ children }) {
   useEffect(() => {
     // Initialize authentication state once on app boot
     checkAuth()
+    // Apply persisted theme early in case inline script was skipped
+    try {
+      const t = localStorage.getItem('theme')
+      if (t === 'dark') document.documentElement.classList.add('dark')
+      if (t === 'light') document.documentElement.classList.remove('dark')
+    } catch (_) {}
   }, [checkAuth])
 
   // Optional initial splash while checking auth

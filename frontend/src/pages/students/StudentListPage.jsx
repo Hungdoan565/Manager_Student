@@ -98,12 +98,48 @@ const StudentListPage = () => {
                 ))}
               </select>
             </div>
+          <div className="flex items-center space-x-3">
+            <button
+              onClick={async () => {
+                try {
+                  const { StudentService } = await import('../../services/studentService')
+                  const blob = await StudentService.exportStudents({ classId: filters.classId })
+                  const url = window.URL.createObjectURL(blob)
+                  const a = document.createElement('a')
+                  a.href = url
+                  a.download = 'students_export.csv'
+                  document.body.appendChild(a)
+                  a.click(); a.remove(); window.URL.revokeObjectURL(url)
+                } catch (e) {}
+              }}
+              className="flex items-center space-x-2 px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition-colors"
+            >
+              <span>Xuất CSV</span>
+            </button>
+            <label className="flex items-center space-x-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors cursor-pointer">
+              <span>Import CSV</span>
+              <input type="file" accept=".csv" className="hidden" onChange={async (e) => {
+                const file = e.target.files?.[0]
+                if (!file) return
+                try {
+                  const { StudentService } = await import('../../services/studentService')
+                  const res = await StudentService.importCsv(file)
+                  toast.success(`Nhập ${res.created || 0} sinh viên thành công`)
+                  fetchStudents({ page: 1, limit: pagination.limit })
+                } catch (err) {
+                  toast.error('Lỗi import CSV')
+                } finally {
+                  e.target.value = ''
+                }
+              }} />
+            </label>
             <button
               onClick={handleAdd}
               className="flex items-center space-x-2 px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
             >
               <span>Thêm sinh viên</span>
             </button>
+          </div>
           </div>
         </div>
       </div>

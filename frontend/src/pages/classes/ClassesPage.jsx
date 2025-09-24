@@ -128,12 +128,48 @@ const ClassesPage = () => {
               </select>
             </div>
             <button 
+              onClick={async () => {
+                try {
+                  const { ClassService } = await import('../../services/classService')
+                  const blob = await ClassService.exportCsv()
+                  const url = window.URL.createObjectURL(blob)
+                  const a = document.createElement('a')
+                  a.href = url
+                  a.download = 'classes_export.csv'
+                  document.body.appendChild(a)
+                  a.click(); a.remove(); window.URL.revokeObjectURL(url)
+                } catch (e) {}
+              }}
+              className="flex items-center space-x-2 px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition-colors"
+            >
+              <Upload className="w-4 h-4" />
+              <span>Xuất CSV</span>
+            </button>
+            <button 
               onClick={() => setShowImportModal(true)}
               className="flex items-center space-x-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
             >
               <Upload className="w-4 h-4" />
               <span>Import Excel</span>
             </button>
+            <label className="flex items-center space-x-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors cursor-pointer">
+              <Upload className="w-4 h-4" />
+              <span>Import CSV</span>
+              <input type="file" accept=".csv" className="hidden" onChange={async (e) => {
+                const file = e.target.files?.[0]
+                if (!file) return
+                try {
+                  const { ClassService } = await import('../../services/classService')
+                  const res = await ClassService.importCsv(file)
+                  toast.success(`Nhập ${res.created || 0} lớp thành công`)
+                  fetchClasses({ page: 1, limit: pagination?.limit || 20 })
+                } catch (err) {
+                  toast.error('Lỗi import CSV')
+                } finally {
+                  e.target.value = ''
+                }
+              }} />
+            </label>
             <button 
               onClick={() => setShowCreateModal(true)}
               className="flex items-center space-x-2 px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"

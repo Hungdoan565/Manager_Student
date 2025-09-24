@@ -35,9 +35,19 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
 export const supabaseHelpers = {
   // Get current user
   async getCurrentUser() {
+    // First, check if there is a session. If not, simply return null
+    const { data: { session }, error: sessionError } = await supabase.auth.getSession()
+    if (sessionError) throw sessionError
+    if (!session) return null
+
+    // With a session present, fetch the user
     const { data: { user }, error } = await supabase.auth.getUser()
-    if (error) throw error
-    return user
+    if (error) {
+      // Gracefully handle the common "Auth session missing" error
+      if (error.name === 'AuthSessionMissingError') return null
+      throw error
+    }
+    return user ?? null
   },
 
   // Get user profile
@@ -60,7 +70,8 @@ export const supabaseHelpers = {
 
   // Check if user is authenticated
   async isAuthenticated() {
-    const { data: { session } } = await supabase.auth.getSession()
+    const { data: { session }, error } = await supabase.auth.getSession()
+    if (error) return false
     return !!session
   }
 }

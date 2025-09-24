@@ -16,6 +16,7 @@ export class StudentService {
       page,
       page_size: limit,
       ordering: `${sortOrder === 'asc' ? '' : '-'}${sortBy}`,
+      expand: 'class',
     }
     if (search) params.search = search
 
@@ -93,8 +94,19 @@ return { success: true }
     return data
   }
 
-  static async exportStudents() {
-    const { data } = await api.get('/students/')
-    return Array.isArray(data) ? data : (data.results ?? [])
+  static async importCsv(file) {
+    const form = new FormData()
+    form.append('file', file)
+    const { data } = await api.post('/students/import', form, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    })
+    return data
+  }
+
+  static async exportStudents(filters = {}) {
+    const params = {}
+    if (filters.classId) params.class_id = filters.classId
+    const res = await api.get('/students/export', { params, responseType: 'blob' })
+    return res.data
   }
 }

@@ -69,7 +69,7 @@ python manage.py test backend.apps.core_app.tests:SomeTestCase
 python manage.py test backend.apps.core_app.tests:SomeTestCase.test_something
 ```
 - Notes
-  - REST API is served under /api/. Endpoints: /api/students/, /api/classes/, /api/classes/{id}/students, /api/attendance/, /api/attendance/reports?class_id=&start_date=&end_date=
+- REST API is served under /api/. Endpoints: /api/students/ (+ export/import, expand=class), /api/classes/ (+ export/import, expand=teacher), /api/classes/{id}/students, /api/attendance/ (+ expand=student,class), /api/attendance/reports|/reports/timeseries|/reports/export
   - Authentication expects Supabase JWT (the frontend attaches it automatically via axios interceptor). RBAC uses the `profiles` table in Supabase as source of truth; DRF permissions read role from DB (with JWT claims fallback).
   - DATABASE_URL should point to your Supabase Postgres; SSL is enabled automatically for supabase.co.
 - Required environment (create backend/.env)
@@ -124,6 +124,10 @@ Cross-cutting notes
 - Environment management: Follow DOCS/supabase_config.md for required variables. Do not commit actual secrets.
 - Scripts under scripts/ are Bash-oriented; on Windows, prefer running the equivalent npm/Django commands shown above.
 - If you need to expose backend endpoints, wire app urls into backend/sms_backend/urls.py and add the app to INSTALLED_APPS in backend/sms_backend/settings.py.
+
+CI
+- Frontend: .github/workflows/frontend-ci.yml (Node 20, npm ci, lint, vitest)
+- Backend: .github/workflows/backend-ci.yml (Python 3.11, pip cache, makemigrations ephemeral, migrate SQLite, manage.py test)
 
 Key references
 - README.md (root): High-level tech stack and quickstart for frontend/backend.

@@ -53,7 +53,7 @@ const LandingPage = () => {
       </a>
 
       {/* Navigation Header */}
-      <nav className="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-200" role="navigation" aria-label="Điều hướng chính">
+<nav className="fixed top-0 left-0 right-0 z-40 bg-card/80 supports-[backdrop-filter]:bg-card/60 backdrop-blur-md border-b border-border" role="navigation" aria-label="Điều hướng chính">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
@@ -61,7 +61,7 @@ const LandingPage = () => {
               <div className="w-8 h-8 bg-primary rounded-xl flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-sm">SMS</span>
               </div>
-              <span className="text-xl font-bold text-gray-900">Student Management</span>
+              <span className="text-xl font-bold text-foreground">Student Management</span>
             </div>
 
             {/* Navigation Links with GooeyNav */}
@@ -79,14 +79,14 @@ const LandingPage = () => {
               <ThemeToggle />
               <Link 
                 to="/login"
-                className="text-gray-700 hover:text-primary transition-colors duration-300 font-medium px-2 sm:px-3 py-2 rounded-md hover:bg-gray-100 text-sm sm:text-base"
+                className="px-3 py-1.5 rounded-md border border-border/70 text-foreground bg-transparent hover:bg-muted/60 font-semibold transition-all duration-200 transform hover:-translate-y-0.5 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring text-sm sm:text-base"
                 aria-label="Đăng nhập"
               >
                 Đăng nhập
               </Link>
               <Link 
                 to="/register"
-                className="text-gray-700 hover:text-primary transition-colors duration-300 font-medium px-2 sm:px-3 py-2 rounded-md hover:bg-gray-100 text-sm sm:text-base"
+                className="px-3 py-1.5 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-sm transition-all duration-200 transform hover:-translate-y-0.5 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring text-sm sm:text-base"
                 aria-label="Đăng ký"
               >
                 Đăng ký
@@ -146,7 +146,7 @@ const LandingPage = () => {
                 <div className="w-8 h-8 bg-primary rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
                   <span className="text-primary-foreground font-bold text-sm">SMS</span>
                 </div>
-                <span className="text-xl font-bold text-gray-900">Student Management</span>
+                <span className="text-xl font-bold text-foreground">Student Management</span>
               </div>
               <p className="text-muted-foreground">
                 Giải pháp quản lý sinh viên toàn diện cho giáo viên và trường học.
@@ -154,37 +154,37 @@ const LandingPage = () => {
             </div>
             
             <div>
-              <h3 className="font-semibold text-gray-900 mb-4">Tính năng</h3>
-              <ul className="space-y-2 text-gray-600">
-                <li><a href="#" className="hover:text-primary transition-colors duration-300">Quản lý sinh viên</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors duration-300">Điểm danh</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors duration-300">Báo cáo</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors duration-300">Thời khóa biểu</a></li>
+              <h3 className="font-semibold text-foreground mb-4">Tính năng</h3>
+              <ul className="space-y-2 text-muted-foreground">
+<li><a href="#" className="hover:text-primary focus-visible:underline underline-offset-4 transition-colors duration-200">Quản lý sinh viên</a></li>
+<li><a href="#" className="hover:text-primary focus-visible:underline underline-offset-4 transition-colors duration-200">Điểm danh</a></li>
+<li><a href="#" className="hover:text-primary focus-visible:underline underline-offset-4 transition-colors duration-200">Báo cáo</a></li>
+<li><a href="#" className="hover:text-primary focus-visible:underline underline-offset-4 transition-colors duration-200">Thời khóa biểu</a></li>
               </ul>
             </div>
             
             <div>
-              <h3 className="font-semibold text-gray-900 mb-4">Hỗ trợ</h3>
-              <ul className="space-y-2 text-gray-600">
-                <li><a href="#" className="hover:text-primary transition-colors duration-300">Trung tâm trợ giúp</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors duration-300">Liên hệ</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors duration-300">Tài liệu</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors duration-300">Video hướng dẫn</a></li>
+              <h3 className="font-semibold text-foreground mb-4">Hỗ trợ</h3>
+              <ul className="space-y-2 text-muted-foreground">
+<li><a href="#" className="hover:text-primary focus-visible:underline underline-offset-4 transition-colors duration-200">Trung tâm trợ giúp</a></li>
+<li><a href="#" className="hover:text-primary focus-visible:underline underline-offset-4 transition-colors duration-200">Liên hệ</a></li>
+<li><a href="#" className="hover:text-primary focus-visible:underline underline-offset-4 transition-colors duration-200">Tài liệu</a></li>
+<li><a href="#" className="hover:text-primary focus-visible:underline underline-offset-4 transition-colors duration-200">Video hướng dẫn</a></li>
               </ul>
             </div>
             
             <div>
-              <h3 className="font-semibold text-gray-900 mb-4">Về chúng tôi</h3>
-              <ul className="space-y-2 text-gray-600">
-                <li><a href="#" className="hover:text-primary transition-colors duration-300">Giới thiệu</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors duration-300">Blog</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors duration-300">Tuyển dụng</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors duration-300">Liên hệ</a></li>
+              <h3 className="font-semibold text-foreground mb-4">Về chúng tôi</h3>
+              <ul className="space-y-2 text-muted-foreground">
+<li><a href="#" className="hover:text-primary focus-visible:underline underline-offset-4 transition-colors duration-200">Giới thiệu</a></li>
+<li><a href="#" className="hover:text-primary focus-visible:underline underline-offset-4 transition-colors duration-200">Blog</a></li>
+<li><a href="#" className="hover:text-primary focus-visible:underline underline-offset-4 transition-colors duration-200">Tuyển dụng</a></li>
+<li><a href="#" className="hover:text-primary focus-visible:underline underline-offset-4 transition-colors duration-200">Liên hệ</a></li>
               </ul>
             </div>
           </div>
           
-          <div className="border-t border-border mt-8 pt-8 text-center text-gray-600">
+          <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
             <p>&copy; 2024 Student Management System. Tất cả quyền được bảo lưu.</p>
           </div>
         </div>
@@ -203,31 +203,6 @@ const LandingPage = () => {
         <ChevronUp className="w-6 h-6" />
       </motion.button>
 
-      {/* Custom CSS for animations */}
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .group:hover {
-          transform: translateY(-8px) rotate(1deg);
-        }
-        
-        .group:hover .group-hover\\:scale-110 {
-          transform: scale(1.1);
-        }
-        
-        .group:hover .group-hover\\:translate-x-1 {
-          transform: translateX(4px);
-        }
-      `}</style>
     </div>
   );
 };

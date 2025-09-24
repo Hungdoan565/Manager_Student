@@ -1,6 +1,5 @@
 /* This file is auto-generated from design.json. Do not edit manually. */
 :root {
-  /* Light tokens */
   --background: #f0f8ff;
   --foreground: #374151;
   --card: #ffffff;
@@ -36,7 +35,6 @@
 }
 
 .dark {
-  /* Dark tokens */
   --background: #0f172a;
   --foreground: #d1d5db;
   --card: #1e293b;
